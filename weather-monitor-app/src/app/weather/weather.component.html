@@ -1,3 +1,11 @@
-<p *ngFor="let value of values">
-    {{value.date}} , {{value.temperatureC}} , {{value.temperatureF}}, {{value.tummary}}
-</p>
+<div>
+    <mat-grid-list [cols]="breakpoint" rowHeight="400px" class="list">
+        <mat-grid-tile *ngFor="let condition of conditions" [colspan]="1" [rowspan]="1">
+            <app-weather-card [conditionsForThisDay]="condition"></app-weather-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div>
+    <app-user-interface></app-user-interface>
+</div>

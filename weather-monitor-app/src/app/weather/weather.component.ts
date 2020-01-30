@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { WeatherForecastService } from '../services/weather-forecast.service';
+import { IConditions } from '../interfaces/conditions';
 
 @Component({
     selector: 'app-weather',
@@ -7,22 +9,21 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-    protected values: any;
+    protected breakpoint;
+    protected conditions: Array<IConditions>;
 
-    constructor(private http: HttpClient) { }
+    constructor(private weatherService: WeatherForecastService) { }
 
     ngOnInit() {
-        this.getWeatherData();
+        this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
+        this.getWeatherConditions();
     }
 
-    protected getWeatherData(): void {
-        this.http.get('http://localhost:5000/weatherforecast').subscribe(
-            response => {
-                this.values = response;
-            },
-            error => {
-                console.log('Error');
-            }
-        );
+    protected getWeatherConditions(): void {
+        this.weatherService.getWeatherData().subscribe(conditions => {
+            this.conditions = conditions;
+        });
     }
+
+
 }
