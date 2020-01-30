@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WeatherMonitor.API.Migrations
 {
-    public partial class Initial : Migration
+    public partial class SecondMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

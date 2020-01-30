@@ -9,8 +9,8 @@ using WeatherMonitor.API.Data;
 namespace WeatherMonitor.API.Migrations
 {
     [DbContext(typeof(WeatherData))]
-    [Migration("20200129223502_Initial")]
-    partial class Initial
+    [Migration("20200130231408_SecondMigration")]
+    partial class SecondMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
