@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 2. Install all the dependencies using npm install
 3. Change the directory: cd WeatherMonitor.API (this is the .net api folder)
 4. Start the api: dotnet run
-5. Change the directory to the angular folder: 
+5. Change the directory to the angular folder: <br>
     cd .. <br/>
     cd weather-monitor-app
 6. Start the angular live development server: npm run start
