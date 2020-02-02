@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { WeatherForecastService } from './services/weather-forecast.service';
+import { WeatherService } from './services/weather.service';
 import { ILocation } from './interfaces/location';
-import { WeatherComponent } from './weather/weather.component';
+import { PreviousWeatherConditionsComponent } from './weather/previous-weather-conditions.component';
 import { IConditions } from './interfaces/conditions';
-import { CurrentDayCardComponent } from './current-day-card/current-day-card.component';
+import { LatestConditionsComponent } from './current-day-card/latest-conditions-component.component';
 import { faSun, faCloud, faWind } from '@fortawesome/free-solid-svg-icons/';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
@@ -13,13 +13,13 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    @ViewChild(WeatherComponent, { static: false }) weatherComponent: WeatherComponent;
-    @ViewChild(CurrentDayCardComponent, { static: false }) latestWeatherConditions: CurrentDayCardComponent;
+    @ViewChild(PreviousWeatherConditionsComponent, { static: false }) weatherComponent: PreviousWeatherConditionsComponent;
+    @ViewChild(LatestConditionsComponent, { static: false }) latestWeatherConditions: LatestConditionsComponent;
 
     public availableLocations: Array<ILocation>;
     public selected: string;
 
-    constructor(private library: FaIconLibrary, private weatherService: WeatherForecastService) {
+    constructor(private library: FaIconLibrary, private weatherService: WeatherService) {
         library.addIcons(faSun, faCloud, faWind);
     }
 

@@ -13,24 +13,24 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatDividerModule} from '@angular/material/divider'; 
 
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './weather/weather.component';
+import { PreviousWeatherConditionsComponent } from './weather/previous-weather-conditions.component';
 import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CurrentDayCardComponent } from './current-day-card/current-day-card.component';
+import { LatestConditionsComponent } from './current-day-card/latest-conditions-component.component';
 
 const appRoutes: Routes = [
     {
         path: 'weatherData',
-        component: WeatherComponent,
+        component: PreviousWeatherConditionsComponent,
     },
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
-        WeatherComponent,
+        PreviousWeatherConditionsComponent,
         WeatherCardComponent,
-        CurrentDayCardComponent
+        LatestConditionsComponent
     ],
     imports: [
         BrowserModule,

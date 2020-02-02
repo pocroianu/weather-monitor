@@ -7,7 +7,7 @@ import { ILocation } from '../interfaces/location';
 @Injectable({
     providedIn: 'root'
 })
-export class WeatherForecastService {
+export class WeatherService {
 
     private weatherForecastApiUrl = 'http://localhost:5000/weatherforecast';
 

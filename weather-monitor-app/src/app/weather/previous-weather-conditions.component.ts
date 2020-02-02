@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, Input, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WeatherForecastService } from '../services/weather-forecast.service';
+import { WeatherService } from '../services/weather.service';
 import { IConditions } from '../interfaces/conditions';
 
 @Component({
-    selector: 'app-weather',
-    templateUrl: './weather.component.html',
-    styleUrls: ['./weather.component.css']
+    selector: 'app-previous-weather-conditions',
+    templateUrl: './previous-weather-conditions.component.html',
+    styleUrls: ['./previous-weather-conditions.component.css']
 })
-export class WeatherComponent implements OnInit, OnDestroy {
+export class PreviousWeatherConditionsComponent implements OnInit, OnDestroy {
 
     protected breakpoint: number;
     @Input() conditions: Array<IConditions>;
@@ -18,7 +18,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
 
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
-    constructor(private weatherService: WeatherForecastService) { }
+    constructor(private weatherService: WeatherService) { }
 
     ngOnInit() {
         // this.breakpoint = (window.innerWidth <= 400) ? 1 : 4;
