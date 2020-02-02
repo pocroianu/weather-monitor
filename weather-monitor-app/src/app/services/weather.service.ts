@@ -9,12 +9,13 @@ import { ILocation } from '../interfaces/location';
 })
 export class WeatherService {
 
+    // todo move this to a shared preferences folder
     protected weatherForecastApiUrl = 'http://localhost:5000/weatherforecast';
 
     constructor(private http: HttpClient) { }
 
     /**
-     * Returns all the weather conditions for all the days
+     * Returns all the weather conditions from the API
      */
     public getWeatherData(): Observable<Array<IConditions>> {
         return this.http.get<Array<IConditions>>(this.weatherForecastApiUrl + '/conditions').pipe();

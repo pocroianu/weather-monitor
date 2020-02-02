@@ -12,14 +12,12 @@ export class PreviousWeatherConditionsComponent implements OnInit {
 
     // A list that contains the previous weather conditions for a specific location
     @Input() conditions: Array<IConditions>;
-    protected breakpoint: number;
     public isVisible: boolean = false;
     public isLoading: boolean = false;
 
     constructor(private weatherService: WeatherService) { }
 
     ngOnInit() {
-        this.breakpoint = (window.innerWidth <= 400) ? 1 : 1;
     }
 
     /**
