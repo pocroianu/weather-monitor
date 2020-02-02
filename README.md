@@ -1,6 +1,6 @@
 # Weather Monitor
 
-Weather monitor app built using .Net 3.1, Angular 8 and Sqlite
+Weather monitor app built using .Net 3.1 and Angular 8.
 
 ## Getting Started
 
