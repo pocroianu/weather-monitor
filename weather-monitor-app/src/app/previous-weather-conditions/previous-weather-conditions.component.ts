@@ -8,28 +8,23 @@ import { IConditions } from '../interfaces/conditions';
     templateUrl: './previous-weather-conditions.component.html',
     styleUrls: ['./previous-weather-conditions.component.css']
 })
-export class PreviousWeatherConditionsComponent implements OnInit, OnDestroy {
+export class PreviousWeatherConditionsComponent implements OnInit {
 
-    protected breakpoint: number;
+    // A list that contains the previous weather conditions for a specific location
     @Input() conditions: Array<IConditions>;
+    protected breakpoint: number;
     public isVisible: boolean = false;
     public isLoading: boolean = false;
-
-
-    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
     constructor(private weatherService: WeatherService) { }
 
     ngOnInit() {
-        // this.breakpoint = (window.innerWidth <= 400) ? 1 : 4;
         this.breakpoint = (window.innerWidth <= 400) ? 1 : 1;
     }
 
-    ngOnDestroy(): void {
-        console.log('WeatherComponent Destroyed')
-    }
-
-
+    /**
+     * Checks if there are any previous weather conditions for this location
+     */
     protected isPreviousWeatherDataAvailable(): boolean {
         return this.conditions !== undefined && this.conditions.length > 1;
     }

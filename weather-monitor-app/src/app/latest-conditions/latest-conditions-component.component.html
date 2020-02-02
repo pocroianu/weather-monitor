@@ -1,0 +1,27 @@
+<div fxLayoutAlign="center center">
+    <div *ngIf="latestWeatherConditions">
+        <mat-card class="latest-conditions-card-container">
+            <mat-card-header class="latest-conditions-card-header">
+                <h2>Latest weather conditions in:</h2>
+            </mat-card-header>
+            <mat-card-title class="latest-conditions-card-title ">
+                <h4>City: {{latestWeatherConditions.location}}</h4>
+                <h4>Current date: {{latestWeatherConditions.date | date:'medium'}}</h4>
+            </mat-card-title>
+            <mat-card-content>
+                <div>Summary: {{latestWeatherConditions.summary}}</div>
+                <div>Precipitation chance: {{latestWeatherConditions.precipitation}}</div>
+                <div>High temps: {{latestWeatherConditions.highestTemperature}}</div>
+                <div>Low temps: {{latestWeatherConditions.highestTemperature}}</div>
+            </mat-card-content>
+            <mat-card-actions class="latest-conditions-card-actions" fxLayout="row" fxLayoutAlign="end">
+                <button mat-button (click)="onChangeToFahrenheit()">
+                    Fahrenheit
+                </button>
+                <button mat-button (click)="onChangeToCelsius()">
+                    Celsius
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

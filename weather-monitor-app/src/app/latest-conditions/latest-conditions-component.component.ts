@@ -15,10 +15,16 @@ export class LatestConditionsComponent implements OnInit {
     ngOnInit() {
     }
 
+    /**
+     * Anchor point
+     */
     protected onChangeToCelsius(): void {
 
     }
 
+    /**
+     * Anchor point
+     */
     protected onChangeToFahrenheit(): void {
 
     }

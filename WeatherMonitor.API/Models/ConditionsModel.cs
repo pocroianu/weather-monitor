@@ -1,7 +1,10 @@
 using System;
 
 namespace WeatherMonitor.API {
-    //  This will hold a location's conditions like temperature, chance of precipitation
+
+    /*
+    This will hold a location's conditions like temperature, chance of precipitation etc
+    */
     public class ConditionsModel {
         public int Id { get; set; }
 

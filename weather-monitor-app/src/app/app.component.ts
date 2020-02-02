@@ -1,11 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { WeatherService } from './services/weather.service';
 import { ILocation } from './interfaces/location';
-import { PreviousWeatherConditionsComponent } from './weather/previous-weather-conditions.component';
 import { IConditions } from './interfaces/conditions';
-import { LatestConditionsComponent } from './current-day-card/latest-conditions-component.component';
-import { faSun, faCloud, faWind } from '@fortawesome/free-solid-svg-icons/';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { PreviousWeatherConditionsComponent } from './previous-weather-conditions/previous-weather-conditions.component';
+import { LatestConditionsComponent } from './latest-conditions/latest-conditions-component.component';
 
 @Component({
     selector: 'app-root',
@@ -19,8 +17,7 @@ export class AppComponent {
     public availableLocations: Array<ILocation>;
     public selected: string;
 
-    constructor(private library: FaIconLibrary, private weatherService: WeatherService) {
-        library.addIcons(faSun, faCloud, faWind);
+    constructor(private weatherService: WeatherService) {
     }
 
     ngOnInit() {
@@ -34,7 +31,7 @@ export class AppComponent {
      */
     protected onMakeAQueryButtonClicked(): void {
         this.weatherComponent.isLoading = true;
-        this.weatherService.getLocationSpecific(this.selected).subscribe(locations => {
+        this.weatherService.getWeatherDataForLocation(this.selected).subscribe(locations => {
             this.onQueryCompleted(locations);
         });
     }

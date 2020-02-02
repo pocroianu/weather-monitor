@@ -3,11 +3,9 @@
     max-width: 100%;
 }
 .latest-conditions-card-title {
-  
 }
 
 .latest-conditions-card-container {
-    /* background-color: mat-primary; */
   min-width: 30rem;
   max-width: 60rem;
 }

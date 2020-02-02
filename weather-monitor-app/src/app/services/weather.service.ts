@@ -9,7 +9,7 @@ import { ILocation } from '../interfaces/location';
 })
 export class WeatherService {
 
-    private weatherForecastApiUrl = 'http://localhost:5000/weatherforecast';
+    protected weatherForecastApiUrl = 'http://localhost:5000/weatherforecast';
 
     constructor(private http: HttpClient) { }
 
@@ -20,7 +20,12 @@ export class WeatherService {
         return this.http.get<Array<IConditions>>(this.weatherForecastApiUrl + '/conditions').pipe();
     }
 
-    public getLocationSpecific(location: string): Observable<Array<IConditions>> {
+    /**
+     * Retrieves the weather conditions for a specific location
+     * from the API
+     * @param location - the location that the user clicked
+     */
+    public getWeatherDataForLocation(location: string): Observable<Array<IConditions>> {
         return this.http.get<Array<IConditions>>(this.weatherForecastApiUrl + '/conditions/' + location).pipe();
     }
 

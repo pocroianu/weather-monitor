@@ -13,12 +13,14 @@ namespace WeatherMonitor.API.Controllers {
             _context = context;
         }
 
+        // Retrieves all the weather conditions
         [HttpGet ("conditions")]
         public async Task<IActionResult> GetAllConditions () {
             var values = await _context.WeatherForecasts.ToListAsync ();
             return Ok (values);
         }
 
+        // Retrieves the weather conditions for a specific location
         [HttpGet ("conditions/{location}")]
         public async Task<IActionResult> GetWeatherConditionForALocation (string location) {
             var conditions = await _context.WeatherForecasts.Where (weatherConditions => weatherConditions.Location == location)
@@ -27,14 +29,16 @@ namespace WeatherMonitor.API.Controllers {
             return Ok (conditions);
         }
 
+        // Retrieves all the available locations
         [HttpGet ("locations")]
         public async Task<IActionResult> GettAllLocations () {
             var values = await _context.LocationModels
-            .OrderBy(location => location.Name)
-            .ToListAsync ();
+                .OrderBy (location => location.Name)
+                .ToListAsync ();
             return Ok (values);
         }
 
+        // Retrieves a specific location using an id 
         [HttpGet ("locations/{id}")]
         public async Task<IActionResult> GetSpecificLocation (int id) {
             var value = await _context.LocationModels.FirstOrDefaultAsync (x => x.Id == id);
