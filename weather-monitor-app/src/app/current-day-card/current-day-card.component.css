@@ -1,0 +1,17 @@
+
+.latest-conditions-card-header {
+    max-width: 100%;
+}
+.latest-conditions-card-title {
+  
+}
+
+.latest-conditions-card-container {
+    /* background-color: mat-primary; */
+  min-width: 30rem;
+  max-width: 60rem;
+}
+latest-conditions-card-actions {
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  margin: 0px !important;
+}

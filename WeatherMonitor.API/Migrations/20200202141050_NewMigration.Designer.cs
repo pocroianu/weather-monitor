@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeatherMonitor.API.Data;
 
 namespace WeatherMonitor.API.Migrations
 {
     [DbContext(typeof(WeatherData))]
-    partial class WeatherDataModelSnapshot : ModelSnapshot
+    [Migration("20200202141050_NewMigration")]
+    partial class NewMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,20 +45,6 @@ namespace WeatherMonitor.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WeatherForecasts");
-                });
-
-            modelBuilder.Entity("WeatherMonitor.API.Models.LocationModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LocationModels");
                 });
 #pragma warning restore 612, 618
         }

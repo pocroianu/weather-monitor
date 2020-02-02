@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IConditions } from '../interfaces/conditions';
 import { Observable } from 'rxjs/internal/Observable';
+import { ILocation } from '../interfaces/location';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,18 @@ export class WeatherForecastService {
      * Returns all the weather conditions for all the days
      */
     public getWeatherData(): Observable<Array<IConditions>> {
-        return this.http.get<Array<IConditions>>(this.weatherForecastApiUrl).pipe();
+        return this.http.get<Array<IConditions>>(this.weatherForecastApiUrl + '/conditions').pipe();
+    }
+
+    public getLocationSpecific(location: string): Observable<Array<IConditions>> {
+        return this.http.get<Array<IConditions>>(this.weatherForecastApiUrl + '/conditions/' + location).pipe();
+    }
+
+    /**
+     * Returns all the locations availabe in the database
+     */
+    public getAllLocations(): Observable<Array<ILocation>> {
+        return this.http.get<Array<ILocation>>(this.weatherForecastApiUrl + '/locations').pipe();
     }
 
 }

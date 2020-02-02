@@ -1,5 +1,41 @@
-<h1 class="text-center">
+<h1 fxLayoutAlign="center center">
     Weather Forecast
 </h1>
 
-<app-weather></app-weather>
+<!-- User interface buttons -->
+<div fxLayout="row" fxLayoutAlign="center center" class="user-interface">
+
+    <!-- This is where the user selects the location -->
+    <div fxFlex="10">
+        <mat-form-field>
+            <mat-label>Select the city</mat-label>
+            <mat-select [(value)]="selected">
+                <mat-option *ngFor="let location of availableLocations" [value]="location.name">
+                    {{location.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+
+    <!-- Select button -->
+    <div fxFlex="8">
+        <button mat-raised-button color="primary" (click)="onMakeAQueryButtonClicked()">Make a query</button>
+    </div>
+
+    <!-- Clear button, useful for developing -->
+    <div fxFlex="8">
+        <button mat-raised-button color="primary" (click)="onClearButtonClicked()">Clear</button>
+    </div>
+
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center start">
+    <div fxFlex="30" fxLayoutAlign="center center">
+        <app-current-day-card></app-current-day-card>
+    </div>
+    <div fxFlex="40">
+        <app-weather></app-weather>
+    </div>
+
+</div>

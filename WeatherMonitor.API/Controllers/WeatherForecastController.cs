@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WeatherMonitor.API.Data;
@@ -12,15 +13,31 @@ namespace WeatherMonitor.API.Controllers {
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetValues () {
+        [HttpGet ("conditions")]
+        public async Task<IActionResult> GetAllConditions () {
             var values = await _context.WeatherForecasts.ToListAsync ();
             return Ok (values);
         }
 
-        [HttpGet ("{id}")]
-        public async Task<IActionResult> GetValue (int id) {
-            var value = await _context.WeatherForecasts.FirstOrDefaultAsync (x => x.Id == id);
+        [HttpGet ("conditions/{location}")]
+        public async Task<IActionResult> GetWeatherConditionForALocation (string location) {
+            var conditions = await _context.WeatherForecasts.Where (weatherConditions => weatherConditions.Location == location)
+                .OrderByDescending (weatherConditions => weatherConditions.Date)
+                .ToListAsync ();
+            return Ok (conditions);
+        }
+
+        [HttpGet ("locations")]
+        public async Task<IActionResult> GettAllLocations () {
+            var values = await _context.LocationModels
+            .OrderBy(location => location.Name)
+            .ToListAsync ();
+            return Ok (values);
+        }
+
+        [HttpGet ("locations/{id}")]
+        public async Task<IActionResult> GetSpecificLocation (int id) {
+            var value = await _context.LocationModels.FirstOrDefaultAsync (x => x.Id == id);
             return Ok (value);
         }
     }

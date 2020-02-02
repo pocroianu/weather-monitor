@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnDestroy, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WeatherForecastService } from '../services/weather-forecast.service';
 import { IConditions } from '../interfaces/conditions';
@@ -8,21 +8,30 @@ import { IConditions } from '../interfaces/conditions';
     templateUrl: './weather.component.html',
     styleUrls: ['./weather.component.css']
 })
-export class WeatherComponent implements OnInit {
-    protected breakpoint;
-    protected conditions: Array<IConditions>;
+export class WeatherComponent implements OnInit, OnDestroy {
+
+    protected breakpoint: number;
+    @Input() conditions: Array<IConditions>;
+    public isVisible: boolean = false;
+    public isLoading: boolean = false;
+
+
+    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
     constructor(private weatherService: WeatherForecastService) { }
 
     ngOnInit() {
-        this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
-        this.getWeatherConditions();
+        // this.breakpoint = (window.innerWidth <= 400) ? 1 : 4;
+        this.breakpoint = (window.innerWidth <= 400) ? 1 : 1;
     }
 
-    protected getWeatherConditions(): void {
-        this.weatherService.getWeatherData().subscribe(conditions => {
-            this.conditions = conditions;
-        });
+    ngOnDestroy(): void {
+        console.log('WeatherComponent Destroyed')
+    }
+
+
+    protected isPreviousWeatherDataAvailable(): boolean {
+        return this.conditions !== undefined && this.conditions.length > 1;
     }
 
 

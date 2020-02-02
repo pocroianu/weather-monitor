@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UserInterfaceComponent } from './user-interface.component';
+import { CurrentDayCardComponent } from './current-day-card.component';
 
-describe('UserInterfaceComponent', () => {
-  let component: UserInterfaceComponent;
-  let fixture: ComponentFixture<UserInterfaceComponent>;
+describe('CurrentDayCardComponent', () => {
+  let component: CurrentDayCardComponent;
+  let fixture: ComponentFixture<CurrentDayCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserInterfaceComponent ]
+      declarations: [ CurrentDayCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserInterfaceComponent);
+    fixture = TestBed.createComponent(CurrentDayCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,11 +1,26 @@
-<div>
-    <mat-grid-list [cols]="breakpoint" rowHeight="400px" class="list">
-        <mat-grid-tile *ngFor="let condition of conditions" [colspan]="1" [rowspan]="1">
+
+<!-- In here we will display weather conditions about a specific city 
+    and a list with the latest weather conditions -->
+<div *ngIf="isVisible" fxLayout="column" fxLayoutAlign="center center" >
+    <div fxFlex="10">
+        <h3>Previous weather conditions</h3>
+    </div>
+    <!-- Displays a list with the previous weather conditions -->
+    <div fxFlex="90" *ngIf="conditions">
+        <div *ngFor="let condition of conditions">
             <app-weather-card [conditionsForThisDay]="condition"></app-weather-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+        </div>
+    </div>
+    <!-- If no previous weather data is available, show a message -->
+    <div *ngIf="!isPreviousWeatherDataAvailable()">
+        No previous weather conditions available
+    </div>
 </div>
 
-<div>
-    <app-user-interface></app-user-interface>
+<!-- If the component doesn't have the required variables received,
+     it will just show a progress spinner -->
+<div *ngIf="isLoading">
+    <mat-progress-spinner value="100" mode="indeterminate">
+    </mat-progress-spinner>
 </div>
+
